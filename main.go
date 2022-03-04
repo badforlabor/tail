@@ -87,7 +87,10 @@ func tailFile(file string, lines int) int {
 	var lineData [][]byte = make([][]byte, 0, lines + 1)
 
 	var addLineData = func(d []byte) {
-		lineData = append(lineData, d)
+		var d1 = make([]byte, len(d))
+		copy(d1, d)
+
+		lineData = append(lineData, d1)
 		if len(lineData) == (lines + 1) {
 			lineData = lineData[1:]
 		}
